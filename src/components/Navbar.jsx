@@ -7,7 +7,7 @@ export function Navbar() {
       <nav className='flex justify-between items-center'>
         <div>
           <Link href="/">
-            <Image src="/logo-comfama.svg" alt="logo-comfama" width={200} height={150} />
+            <Image src="/name-comfama.svg" alt="logo-comfama" width={200} height={150} />
           </Link>
         </div>
 

@@ -1,6 +1,19 @@
+"use client";
+import { ExcelUploader } from "@/components/ExcelUploader";
+import { useData } from "@/context/DataContext";
+
 function Home() {
+  const { data } = useData();
+
+  console.log(data);
+
   return (
-    <div>Home</div>
+    <div>
+      <ExcelUploader />
+
+      <h1>Home</h1>
+
+    </div>
   )
 }
 
