@@ -12,7 +12,7 @@ export function ExcelUploader() {
     const [isLoading, setIsLoading] = useState(false);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
     //Context Data
-    const { saveData } = useData();
+    const { saveData, data } = useData();
 
     const handleDrop = (event) => {
         setIsLoading(true);
@@ -28,6 +28,8 @@ export function ExcelUploader() {
                 "¿Está seguro de que desea reemplazar el archivo existente?"
             );
             if (!confirmReplace) {
+                setIsLoading(false);
+                saveData(data);
                 return;
             }
         }
@@ -62,7 +64,7 @@ export function ExcelUploader() {
             <section
                 onDragOver={(event) => event.preventDefault()}
                 onDrop={handleDrop}
-                
+
             >
                 <div>
                     <input
@@ -72,16 +74,20 @@ export function ExcelUploader() {
                         style={{ display: "none" }}
                     />
                     <div className="grid gap-2 p-2">
-                        <button onClick={handleButtonClick} type="button" className="btn btn-lg btn-primary m-4 mb-1 h-20 rounded-lg bg-gray-300 text-black">Pulse o arrastre aquí para cargar un archivo</button>
+                        <button onClick={handleButtonClick} type="button" className="btn btn-lg btn-primary m-4 mb-1 h-20 rounded-lg bg-gray-300 text-black text-2xl">Pulse o arrastre aquí para cargar un archivo</button>
                     </div>
                     {
-                        isLoading && <p className="text-center mb-6"> El archivo {file.name} esta siendo cargado</p>
+                        isLoading && <p className="text-center mb-6 text-2xl"> El archivo <b>{file.name}</b> está siendo cargado</p>
                     }
 
                     {isLoading && <Spinner />}
 
                     {!isLoading && showSuccessMessage && (
-                        <p className="text-center">Archivo {file?.name} cargado con éxito</p>
+                        <p className="text-center text-2xl">Archivo <b>{file.name}</b> cargado con éxito</p>
+                    )}
+
+                    {!isLoading && hasFile && !showSuccessMessage && (
+                        <p className="text-center text-2xl">Archivo <b>{file.name}</b> cargado</p>
                     )}
 
                 </div>
