@@ -1,7 +1,7 @@
 "use client";
+import * as XLSX from "xlsx";
 import { useState } from "react";
 import { useData } from "@/context/DataContext";
-import * as XLSX from "xlsx";
 import { Spinner } from "@/components/Spinner";
 
 export function ExcelUploader() {
@@ -74,7 +74,7 @@ export function ExcelUploader() {
                         style={{ display: "none" }}
                     />
                     <div className="grid gap-2 p-2">
-                        <button onClick={handleButtonClick} type="button" className="btn btn-lg btn-primary m-4 mb-1 h-20 rounded-lg bg-gray-300 text-black text-2xl">Pulse o arrastre aquí para cargar un archivo</button>
+                        <button onClick={handleButtonClick} type="button" className="btn btn-lg btn-primary m-4 mb-1 h-20 rounded-lg bg-gray-200 text-black text-2xl">Pulse o arrastre aquí para cargar un archivo</button>
                     </div>
                     {
                         isLoading && <p className="text-center mb-6 text-2xl"> El archivo <b>{file.name}</b> está siendo cargado</p>

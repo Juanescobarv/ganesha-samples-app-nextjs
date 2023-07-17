@@ -1,5 +1,6 @@
 "use client";
 import { ExcelUploader } from "@/components/ExcelUploader";
+import { SelectToggle } from "@/components/SelectToggle";
 import { useData } from "@/context/DataContext";
 
 function Home() {
@@ -10,9 +11,7 @@ function Home() {
   return (
     <div>
       <ExcelUploader />
-
-      <h1>Home</h1>
-
+      <SelectToggle />
     </div>
   )
 }
