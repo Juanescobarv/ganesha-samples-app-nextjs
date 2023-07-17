@@ -12,15 +12,33 @@ export const useData = () => {
 };
 
 export const DataProvider = ({ children }) => {
-    const [data, SetData] = useState([]);
-
+    //Load data from excel
+    const [data, setData] = useState([]); 
     const saveData = (data) => {
-        SetData(data);
+        setData(data);
+    };
+    //Load data from Sample
+    const [sample, setSample] = useState({
+        nombre: "",
+        apellido: "",
+        correo: "",
+        auditoria: "",
+        TamanoPoblacion: 0, //Tamaño del Universo/Población(N)
+        NivelDeConfianza: "",
+        ProbabilidadDeExito: "",
+        ErrorDeEstimacion: "",
+        data: [],
+      });
+
+    const saveSample = (sample) => {
+        setSample(sample);
     };
 
     return <DataContext.Provider value={{
         data,
-        saveData
+        saveData, 
+        sample,
+        saveSample
     }}>{children}</DataContext.Provider>;
 };
 

@@ -23,8 +23,8 @@ export function SelectToggle() {
     const componentsMap = {
         mas: <Mas />,
         emas: <Emas />,
-        mpe: <Mape />,
-        empe: <Emape />,
+        mape: <Mape />,
+        emape: <Emape />,
     };
 
     const renderComponent = () => {
@@ -45,8 +45,8 @@ export function SelectToggle() {
                     <option className="nav-link dropdown-toggle" value="">Seleccione qué le gustaría hacer</option>
                     <option className="nav-link dropdown-toggle" value="mas">Muestra Aleatoria Simple</option>
                     <option className="nav-link dropdown-toggle" value="emas">Estimadores de Muestra Aleatoria Simple</option>
-                    <option className="nav-link dropdown-toggle" value="mpe">Muestra por Estrato</option>
-                    <option className="nav-link dropdown-toggle" value="empe">Estimadores de Muestra por Estrato</option>
+                    <option className="nav-link dropdown-toggle" value="mape">Muestra por Estrato</option>
+                    <option className="nav-link dropdown-toggle" value="emape">Estimadores de Muestra por Estrato</option>
                 </select>
 
 
