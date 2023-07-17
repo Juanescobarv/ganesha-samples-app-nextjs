@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useData } from "@/context/DataContext";
+import { TechnicalMas } from "@/components/technical_samples/TechnicalMas";
 
 export function Mas() {
   //Loading State
@@ -15,14 +16,8 @@ export function Mas() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Aquí podrías hacer alguna validación o manipulación de los datos antes de enviarlos al componente.
-    // sample.NivelDeConfianza = Number(sample.NivelDeConfianza);
-    // sample.ProbabilidadDeExito = Number(sample.ProbabilidadDeExito); //P
-    // sample.ProbabilidadDeFallo = 0; // Q
-    // sample.ErrorDeEstimacion = Number(sample.ErrorDeEstimacion); //e
-    // Luego los enviamos al componente Data como propiedades}
     setHasData(true);
-    console.log(sample);
+    // console.log(sample);
   };
 
   return (
@@ -113,8 +108,7 @@ export function Mas() {
       Obtener muestra
     </button>
   </form>
-
-    {/* <div>{hasData && <Technicalsample {...sample} />}</div> */}
+    {<div>{hasData && <TechnicalMas />}</div>}
   </section>
   );
 }
