@@ -17,7 +17,6 @@ export function Mas() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setHasData(true);
-    // console.log(sample);
   };
 
   return (
@@ -72,7 +71,7 @@ export function Mas() {
           <input
             className="ml-5 bg-gray-100"
             type="number"
-            value={sample.NivelDeConfianza}
+            value={sample.nivelDeConfianza}
             name="NivelDeConfianza"
             onChange={onChange}
           />
@@ -82,7 +81,7 @@ export function Mas() {
           <input
             className="ml-5 bg-gray-100"
             type="number"
-            value={sample.ProbabilidadDeExito}
+            value={sample.probabilidadDeExito}
             name="ProbabilidadDeExito"
             onChange={onChange}
           />
@@ -92,7 +91,7 @@ export function Mas() {
           <input
             className="ml-5 bg-gray-100"
             type="number"
-            value={sample.ErrorDeEstimacion}
+            value={sample.errorDeEstimacion}
             name="ErrorDeEstimacion"
             onChange={onChange}
           />
