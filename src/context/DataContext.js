@@ -19,6 +19,7 @@ export const DataProvider = ({ children }) => {
 
     //Load data from excel
     const [data, setData] = useState([]); 
+
     const saveData = (data) => {
         setData(data);
     };
@@ -34,9 +35,11 @@ export const DataProvider = ({ children }) => {
         nivelDeConfianza: 95, //Confidence level (Z)
         probabilidadDeExito: 50, //Probability of success (p)
         probailidadDeFallo: 50, //Probability of failure (q)
-        errorDeEstimacion: 5, //Margin of error (e)
+        errorDeEstimacion: 5, //Margin of error ()
         data: [], //Data from the sample
       });
+    
+    sample.data = data
 
     const saveSample = (sample) => {
         setSample(sample);

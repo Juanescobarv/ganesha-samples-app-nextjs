@@ -3,20 +3,20 @@ import { createContext, useContext, useState } from "react";
 
 const ProcessingContext = createContext();
 
-export const useProcessing = () => {
-    const context = useContext(ProcessingContext)
-    if (!context) {
-        throw new Error("useProcessing must be used within a ProcessingProvider")
-    }
-    return context
-}
+// export const useProcessing = () => {
+//     const context = useContext(ProcessingContext)
+//     if (!context) {
+//         throw new Error("useProcessing must be used within a ProcessingProvider")
+//     }
+//     return context
+// }
 
 export const ProcessingProvider = ({ children }) => {
     
     const pow_q = (value, exponent) => Math.pow(value, exponent);
     const pow_r = (value, exponent) => Math.pow(value, exponent);
 
-    //NormSInv function to calculate the Z value of the confidence level 
+    //normSInv function to calculate the Z value of the confidence level 
     const normSInv = (p) => {
         if (p < 0 || p > 1) {
             console.error("NormSInv: Argument out of range.");
@@ -47,42 +47,40 @@ export const ProcessingProvider = ({ children }) => {
     };
 
     //Object to processing data the sample
-    const [sampleProcessing, setsampleProcessing] = useState({
-        N,
-        Z,
-        p,
-        q,
-        e,
-        n,
+    const [sampleProcessing, setSampleProcessing] = useState({
+        N: 0,
+        Z: 0,
+        p: 0,
+        q: 0,
+        e: 0,
+        n: 0,
 
     });
 
 
-    const saveSampleProcessing = (N, z, p, e) => {
+    const saveSampleProcessing = (N, z, p, e) => { //sample.data, sample.nivelDeConfianza, sample.probabilidadDeExito, sample.errorDeEstimacion
         //Size/universe/population(N)
         sampleProcessing.N = N.length - 1;
 
         //Confidence level (Z)
-        const z = mas.NivelDeConfianza / 100; //Change to decimal
-        const alfa = 1 - z; //Significance level
-        sampleProcessing.Z = NormSInv(z * (alfa / 2)) * -1; //Z
+        const zeta = parseInt(z) / 100; //Change to decimal
+        const alfa = 1 - zeta; //Significance level
+        sampleProcessing.Z = normSInv(zeta * (alfa / 2)) * -1; //Z
 
         //Probability of success (p)
-        sampleProcessing.p = p / 100; //Change to decimal
+        sampleProcessing.p = parseInt(p) / 100; //Change to decimal
 
         //Probability of failure (q)
         sampleProcessing.q = 1 - sampleProcessing.p; //q
 
         //Margin of error (e)
-        sampleProcessing.e = e / 100; //Change to decimal
+        sampleProcessing.e = parseInt(e) / 100; //Change to decimal
 
         //Sample size (n)
         sampleProcessing.n = Math.ceil((sampleProcessing.N * sampleProcessing.Z ** 2 * sampleProcessing.p * sampleProcessing.q) / ((sampleProcessing.N - 1) * e ** 2 + sampleProcessing.Z ** 2 * sampleProcessing.p * sampleProcessing.q))
 
-        setsampleProcessing(sampleProcessing);
+        setSampleProcessing(sampleProcessing);
     };
-
-
 
     return <ProcessingContext.Provider value={{
         sampleProcessing,
