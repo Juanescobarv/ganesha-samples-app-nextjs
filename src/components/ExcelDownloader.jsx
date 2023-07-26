@@ -27,6 +27,7 @@ export function ExcelDownloader() {
   console.log(arrayLength)
  
   //Function to handle the click event
+  //FIX TO DO: If the sample size is smaller, the function can bring double the header
   const handleExportClick = async () => { 
     const indexes = await indexesArray(arrayLength, sampleProcessing.n); //Array of indexes
     const dataRandom = indexes.map((index) => data[index]);
