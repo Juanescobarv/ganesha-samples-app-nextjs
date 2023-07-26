@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useData } from "@/context/DataContext";
-
 import { TechnicalMas } from "@/components/technical_samples/TechnicalMas";
 import { Graph } from "@/components/graphs/Graph";
 import { ExcelDownloader } from "@/components/ExcelDownloader";
@@ -12,12 +11,12 @@ export function Mas() {
   const { data, saveData, sample, saveSample } = useData();
 
   //Loading State Sample
-  const onChange = (event) => {
+  const onChange = async (event) => {
     event.preventDefault();
-    saveSample({ ...sample, [event.target.name]: event.target.value });
+    await saveSample({ ...sample, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     saveData(data)
     setHasData(true);
@@ -113,9 +112,9 @@ export function Mas() {
       </form>
       {<section>
         {hasData && <TechnicalMas />}
-        {hasData && <Graph />}
+        {/* {hasData && <Graph />} */}
       </section>}
-      <div>
+      <div className="w-auto h-12 rounded-lg mx-auto my-6 text-white">
         {hasData && <ExcelDownloader />}
       </div>
     </section>

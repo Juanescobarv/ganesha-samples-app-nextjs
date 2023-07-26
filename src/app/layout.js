@@ -2,6 +2,7 @@ import { Navbar } from '@/components/Navbar'
 import { DataProvider } from '@/context/DataContext'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { ProcessingProvider } from '@/context/ProcessingContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,7 +27,10 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <Navbar />
         <DataProvider>
-            {children}
+          <ProcessingProvider>
+            <main>{children}</main>
+          </ProcessingProvider>
+           
         </DataProvider>
       </body>
     </html>

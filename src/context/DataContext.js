@@ -39,6 +39,7 @@ export const DataProvider = ({ children }) => {
         data: [], //Data from the sample
       });
     
+    //Save the data of the sample
     sample.data = data
 
     const saveSample = (sample) => {
