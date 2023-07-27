@@ -27,8 +27,18 @@ export function Mas() {
       <form className="form-select-sm flex flex-col" onSubmit={handleSubmit}>
         <div className="flex flex-row justify-around">
           <div className="flex flex-col ml-5">
+          <label className="mt-4">
+              Nombre de la auditoria:
+              <input
+                className="ml-5 bg-gray-100"
+                type="text"
+                value={sample.auditoria}
+                name="auditoria"
+                onChange={onChange}
+              />
+            </label>
             <label className="mt-2">
-              Nombre:
+              Nombre del auditor:
               <input
                 className="bg-gray-100 ml-5"
                 type="text"
@@ -37,8 +47,9 @@ export function Mas() {
                 onChange={onChange}
               />
             </label>
+            {/*TODO: Select calendar */}
             <label className="mt-4">
-              Apellido:
+              Periodo de la auditoria:
               <input
                 className="bg-gray-100 ml-5"
                 type="text"
@@ -54,16 +65,6 @@ export function Mas() {
                 type="email"
                 value={sample.correo}
                 name="correo"
-                onChange={onChange}
-              />
-            </label>
-            <label className="mt-4">
-              Nombre de la auditoria:
-              <input
-                className="ml-5 bg-gray-100"
-                type="text"
-                value={sample.auditoria}
-                name="auditoria"
                 onChange={onChange}
               />
             </label>
