@@ -1,0 +1,33 @@
+name: GitHub Pages Deploy
+
+on:
+  push:
+    branches:
+      - main # Cambia "main" por la rama en la que deseas hacer el deploy
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.4.0' # Cambia a la versión de Node.js que estés utilizando en tu proyecto
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Next.js project
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        env:
+          NEXT_PUBLIC_BASE_PATH: '/ganesha-samples-app-nextjs' # Cambia "nombre-del-repositorio" por el nombre de tu repositorio
+        run: |
+          npm install -g gh-pages
+          gh-pages -d out -b gh-pages -t
+
