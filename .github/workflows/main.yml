@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20.4.0' # Cambia a la versión de Node.js que estés utilizando en tu proyecto
+          node-version: '20' # Cambia a la versión de Node.js que estés utilizando en tu proyecto
 
       - name: Install dependencies
         run: npm install
@@ -24,9 +24,14 @@ jobs:
       - name: Build Next.js project
         run: npm run build
 
+      - name: Configure Git identity
+        run: |
+          git config --global user.email "krhistian1902@gmail.com"
+          git config --global user.name "CristiAndLook"
+
       - name: Deploy to GitHub Pages
         env:
-          NEXT_PUBLIC_BASE_PATH: '/ganesha-samples-app-nextjs' # Cambia "nombre-del-repositorio" por el nombre de tu repositorio
+          NEXT_PUBLIC_BASE_PATH: '/ganesha-samples-app-nextjs' # Cambia "/ganesha-samples-app-nextjs" por la ruta base de tu proyecto
         run: |
           npm install -g gh-pages
           gh-pages -d out -b gh-pages -t
