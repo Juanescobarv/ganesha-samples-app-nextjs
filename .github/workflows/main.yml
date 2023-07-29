@@ -32,6 +32,7 @@ jobs:
       - name: Deploy to GitHub Pages
         env:
           NEXT_PUBLIC_BASE_PATH: '/ganesha-samples-app-nextjs' # Cambia "/ganesha-samples-app-nextjs" por la ruta base de tu proyecto
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: |
           npm install -g gh-pages
           gh-pages -d out -b gh-pages -t
