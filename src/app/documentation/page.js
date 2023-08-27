@@ -1,6 +1,10 @@
+import { CreatePDF } from "@/components/CreatePDF"
+
 function Documentation() {
   return (
-    <div>Documentación</div>
+    <div>
+      <CreatePDF />
+    </div>
   )
 }
 

@@ -7,12 +7,10 @@ export function TechnicalMas() {
 
   //Context processing
   const { sampleProcessing, saveSampleProcessing } = useProcessing();
-  console.log(sampleProcessing);
-  saveSampleProcessing(sample.data, sample.nivelDeConfianza, sample.probabilidadDeExito, sample.errorDeEstimacion)
-  console.log(sampleProcessing)
- 
 
-  {/*TODO: Change de fields of name type of audit */}
+  saveSampleProcessing(sample.data, sample.nivelDeConfianza, sample.probabilidadDeExito, sample.errorDeEstimacion)
+
+ 
   return (
     <section className="d-flex flex-row justi justify-content-around card border-secondary mb-5 m-2 p-2">
       <h2 className="text-center m-4 mt-5">Ficha técnica MAS</h2>
