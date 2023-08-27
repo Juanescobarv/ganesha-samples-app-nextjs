@@ -18,15 +18,16 @@ export function TechnicalMas() {
       <h2 className="text-center m-4 mt-5">Ficha técnica MAS</h2>
       <div className="mt-5">
         <p>Fecha de selección de muestra: {sample.fecha}</p>
-        <p>Nombre de la auditoria: {sample.auditoria}</p>
         <p>Diseño muestral: Muestra Aleatoria Simple</p>
-        <p>
-          Nombre del auditor: {sample.nombre} {sample.apellido}{" "}
-        </p>
-        <p>Correo: {sample.correo}</p>
-        <p>Periodo de la auditoria: </p>
+
+        <p>Nombre de la auditoria: {sample.auditoria}</p>
+        <p>Periodo de la auditoria: Desde {sample.periodoInicio} hasta {sample.periodoFin}</p>
+        <p>Nombre de la prueba: {sample.prueba}</p>
+        <p>Descripción: {sample.descripcion} </p>
         
-        <p>Descripción: </p>
+        <p>Nombre del auditor: {sample.nombre}</p>
+        <p>Correo: {sample.correo}</p>
+        
         <p>Tamaño de la población: {sampleProcessing.N}</p>
         <p>Nivel de confianza: {sample.nivelDeConfianza}%</p>
         <p>Probabilidad de éxito: {sample.probabilidadDeExito}%</p>
