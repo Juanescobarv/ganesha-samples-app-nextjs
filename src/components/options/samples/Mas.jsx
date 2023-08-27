@@ -10,9 +10,12 @@ export function Mas() {
   //Context Data
   const { data, saveData, sample, saveSample } = useData();
 
+
+
   //Loading State Sample
   const onChange = async (event) => {
     event.preventDefault();
+
     await saveSample({ ...sample, [event.target.name]: event.target.value });
   };
 
@@ -27,7 +30,7 @@ export function Mas() {
       <form className="form-select-sm flex flex-col" onSubmit={handleSubmit}>
         <div className="flex flex-row justify-around">
           <div className="flex flex-col ml-5">
-          <label className="mt-4">
+            <label className="mt-4">
               Nombre de la auditoria:
               <input
                 className="ml-5 bg-gray-100"
@@ -37,6 +40,50 @@ export function Mas() {
                 onChange={onChange}
               />
             </label>
+
+            <label className="mt-4">
+              Periodo de la auditoria:
+              <input
+                className="bg-gray-100 ml-5"
+                type="date"
+                value={sample.periodoInicio}
+                name="periodoInicio"
+                onChange={onChange}
+              />
+              <span className="ml-5">a</span>
+              <input
+                className="bg-gray-100 ml-5"
+                type="date"
+                value={sample.periodoFin}
+                name="periodoFin"
+                onChange={onChange}
+              />
+            </label>
+
+            <label className="mt-4">
+              Nombre de la prueba:
+              <input
+                className="bg-gray-100 ml-5"
+                type="text"
+                value={sample.prueba}
+                name="prueba"
+                onChange={onChange}
+              />
+            </label>
+
+            <label className="mt-4">
+              Descripción de la prueba:
+              <textarea
+                className="bg-gray-100 ml-5 p-2 w-full"
+                value={sample.descripcion}
+                name="descripcion"
+                onChange={onChange}
+                rows="10"
+              ></textarea>
+            </label>
+          </div>
+
+          <div className="flex flex-col mr-5">
             <label className="mt-2">
               Nombre del auditor:
               <input
@@ -44,17 +91,6 @@ export function Mas() {
                 type="text"
                 value={sample.nombre}
                 name="nombre"
-                onChange={onChange}
-              />
-            </label>
-            {/*TODO: Select calendar */}
-            <label className="mt-4">
-              Periodo de la auditoria:
-              <input
-                className="bg-gray-100 ml-5"
-                type="text"
-                value={sample.apellido}
-                name="apellido"
                 onChange={onChange}
               />
             </label>
@@ -68,8 +104,6 @@ export function Mas() {
                 onChange={onChange}
               />
             </label>
-          </div>
-          <div className="flex flex-col mr-5">
             <label className="mt-2">
               Nivel de confianza:
               <input

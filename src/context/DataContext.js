@@ -27,10 +27,15 @@ export const DataProvider = ({ children }) => {
     //Object to save the sample
     const [sample, setSample] = useState({
         fecha: fullDate, //Date of the sample
-        nombre: '', //Name of the investigator
-        apellido: '', //Last name of the investigator
-        correo: '', //Email of the investigator
         auditoria: '', //Name of the audit
+        periodoInicio: '', //Start date of the audit
+        periodoFin: '', //End date of the audit
+        prueba: '', //Last name of the investigator
+        descripcion: '', //Description of the test
+
+        nombre: '', //Name of the investigator
+        correo: '', //Email of the investigator
+        
         tamanoPoblacion: 0, //Size/universe/population(N)
         nivelDeConfianza: 95, //Confidence level (Z)
         probabilidadDeExito: 50, //Probability of success (p)
