@@ -29,30 +29,32 @@ export function Mas() {
     <section>
       <form className="form-select-sm flex flex-col" onSubmit={handleSubmit}>
         <div className="flex flex-row justify-around">
-          <div className="flex flex-col ml-5">
-            <label className="mt-4">
+          <div className="flex flex-col m-5 max-w-sm min-w-384"> 
+            <label className="block text-gray-700 text-sm font-bold mb-2">
               Nombre de la auditoria:
               <input
-                className="ml-5 bg-gray-100"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2"
+                style={{ borderBottomColor: "#EE2B7B" }}
                 type="text"
                 value={sample.auditoria}
                 name="auditoria"
                 onChange={onChange}
               />
             </label>
-
-            <label className="mt-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
               Periodo de la auditoria:
               <input
-                className="bg-gray-100 ml-5"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                style={{ borderBottomColor: "#EE2B7B" }}
                 type="date"
                 value={sample.periodoInicio}
                 name="periodoInicio"
                 onChange={onChange}
               />
-              <span className="ml-5">a</span>
+              <span>Hasta:</span>
               <input
-                className="bg-gray-100 ml-5"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                style={{ borderBottomColor: "#EE2B7B" }}
                 type="date"
                 value={sample.periodoFin}
                 name="periodoFin"
@@ -60,10 +62,11 @@ export function Mas() {
               />
             </label>
 
-            <label className="mt-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
               Nombre de la prueba:
               <input
-                className="bg-gray-100 ml-5"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2"
+                style={{ borderBottomColor: "#EE2B7B" }}
                 type="text"
                 value={sample.prueba}
                 name="prueba"
@@ -71,63 +74,69 @@ export function Mas() {
               />
             </label>
 
-            <label className="mt-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
               Descripción de la prueba:
               <textarea
-                className="bg-gray-100 ml-5 p-2 w-full"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2"
+                style={{ borderBottomColor: "#EE2B7B" }}
                 value={sample.descripcion}
                 name="descripcion"
                 onChange={onChange}
-                rows="10"
+                rows="2"
               ></textarea>
             </label>
           </div>
 
-          <div className="flex flex-col mr-5">
-            <label className="mt-2">
+          <div className="flex flex-col m-5" style={{width: 384}}>
+            <label className="block text-gray-700 text-sm font-bold mb-2">
               Nombre del auditor:
               <input
-                className="bg-gray-100 ml-5"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2"
+                style={{ borderBottomColor: "#EE2B7B" }}
                 type="text"
                 value={sample.nombre}
                 name="nombre"
                 onChange={onChange}
               />
             </label>
-            <label className="mt-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
               Correo:
               <input
-                className="ml-5 bg-gray-100"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2"
+                style={{ borderBottomColor: "#EE2B7B" }}
                 type="email"
                 value={sample.correo}
                 name="correo"
                 onChange={onChange}
               />
             </label>
-            <label className="mt-2">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
               Nivel de confianza:
               <input
-                className="ml-5 bg-gray-100"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2"
+                style={{ borderBottomColor: "#EE2B7B" }}
                 type="number"
                 value={sample.nivelDeConfianza}
                 name="nivelDeConfianza"
                 onChange={onChange}
               />
             </label>
-            <label className="mt-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
               Probabilidad de éxito:
               <input
-                className="ml-5 bg-gray-100"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2"
+                style={{ borderBottomColor: "#EE2B7B" }}
                 type="number"
                 value={sample.probabilidadDeExito}
                 name="probabilidadDeExito"
                 onChange={onChange}
               />
             </label>
-            <label className="mt-4">
-              Margen de Error:
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Margen de error:
               <input
-                className="ml-5 bg-gray-100"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2"
+                style={{ borderBottomColor: "#EE2B7B" }}
                 type="number"
                 value={sample.errorDeEstimacion}
                 name="errorDeEstimacion"
