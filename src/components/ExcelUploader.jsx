@@ -83,11 +83,11 @@ export function ExcelUploader() {
                     {isLoading && <Spinner />}
 
                     {!isLoading && showSuccessMessage && (
-                        <p className="text-center text-2xl">Archivo <b>{file.name}</b> cargado con éxito</p>
+                        <p className="text-center text-2xl">Archivo <b className="text-[#EE2B7B]">{file.name}</b> cargado con éxito</p>
                     )}
 
                     {!isLoading && hasFile && !showSuccessMessage && (
-                        <p className="text-center text-2xl">Archivo <b>{file.name}</b> cargado</p>
+                        <p className="text-center text-2xl">Archivo <b className="text-[#EE2B7B]">{file.name}</b> cargado</p>
                     )}
 
                 </div>

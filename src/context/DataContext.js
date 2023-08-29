@@ -18,10 +18,15 @@ export const DataProvider = ({ children }) => {
     const fullDate = `${day}/${month}/${year}`;
 
     //Load data from excel
-    const [data, setData] = useState([]); 
+    const [data, setData] = useState([]);
+    const [indexes, setIndexes] = useState([]);
 
     const saveData = (data) => {
         setData(data);
+    };
+
+    const saveIndexes = (indexes) => {
+        setIndexes(indexes);
     };
 
     //Object to save the sample
@@ -35,17 +40,19 @@ export const DataProvider = ({ children }) => {
 
         nombre: '', //Name of the investigator
         correo: '', //Email of the investigator
-        
+
         tamanoPoblacion: 0, //Size/universe/population(N)
         nivelDeConfianza: 95, //Confidence level (Z)
         probabilidadDeExito: 50, //Probability of success (p)
         probailidadDeFallo: 50, //Probability of failure (q)
         errorDeEstimacion: 5, //Margin of error ()
         data: [], //Data from the sample
-      });
-    
+        indexes: [], //Indexes of the data
+    });
+
     //Save the data of the sample
     sample.data = data
+    sample.indexes = indexes
 
     const saveSample = (sample) => {
         setSample(sample);
@@ -53,7 +60,9 @@ export const DataProvider = ({ children }) => {
 
     return <DataContext.Provider value={{
         data,
-        saveData, 
+        saveData,
+        indexes,
+        saveIndexes,
         sample,
         saveSample
     }}>{children}</DataContext.Provider>;

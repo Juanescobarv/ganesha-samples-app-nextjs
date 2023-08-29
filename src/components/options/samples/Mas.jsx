@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useData } from "@/context/DataContext";
+import { useProcessing } from "@/context/ProcessingContext";
 import { TechnicalMas } from "@/components/technical_samples/TechnicalMas";
 import { Graph } from "@/components/graphs/Graph";
 import { ExcelDownloader } from "@/components/ExcelDownloader";
@@ -8,28 +9,34 @@ export function Mas() {
   //Loading State
   const [hasData, setHasData] = useState(false);
   //Context Data
-  const { data, saveData, sample, saveSample } = useData();
+  const { data, saveData, saveIndexes, sample, saveSample } = useData();
+  //Use Processing
+  const { sampleProcessing, indexesArray } = useProcessing();
 
 
 
   //Loading State Sample
   const onChange = async (event) => {
     event.preventDefault();
-
     await saveSample({ ...sample, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    //Data
     saveData(data)
     setHasData(true);
+    //Indexes
+    const arrayLength = data.length - 1;
+    const indexes = indexesArray(arrayLength, sampleProcessing.n); //Array of indexes
+    saveIndexes(indexes)
   };
 
   return (
     <section>
       <form className="form-select-sm flex flex-col" onSubmit={handleSubmit}>
         <div className="flex flex-row justify-around">
-          <div className="flex flex-col m-5 max-w-sm min-w-384"> 
+          <div className="flex flex-col m-5 max-w-sm min-w-384">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Nombre de la auditoria:
               <input
@@ -87,7 +94,7 @@ export function Mas() {
             </label>
           </div>
 
-          <div className="flex flex-col m-5" style={{width: 384}}>
+          <div className="flex flex-col m-5" style={{ width: 384 }}>
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Nombre del auditor:
               <input
