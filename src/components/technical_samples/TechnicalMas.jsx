@@ -34,7 +34,7 @@ export function TechnicalMas() {
         <p>Error de estimación: {sample.errorDeEstimacion}%</p>
         <p>Tamaño de la muestra: {sampleProcessing.n}</p>
       </div>
-      <Graph />
+      {/* <Graph /> */}
     </section>
 
   )
