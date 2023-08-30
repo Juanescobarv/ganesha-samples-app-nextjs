@@ -1,10 +1,9 @@
-'use client';
 import * as XLSX from "xlsx";
 import { useData } from "@/context/DataContext";
 
 export function ExcelDownloader() {
   //Use Data
-  const { data, indexes } = useData();
+  const { data, indexes, sample } = useData();
 
   //Fuction to export data to Excel
   const exportToExcel = (ranData, headerExcel) => {
@@ -15,14 +14,11 @@ export function ExcelDownloader() {
     XLSX.writeFile(workbook, ".muestra-aleatoria-simple.xlsx");
   };
   
-  const headerExcel = data[0]; //Header of the Excel
-
   //Function to handle the click event
   //FIX TO DO: If the sample size is smaller, the function can bring double the header
   const handleExportClick = () => { 
-    
-    const dataRandom = indexes.map((index) => data[index]);
-    exportToExcel(dataRandom, headerExcel); //Llamamos a la función exportToExcel
+    const dataRandom =  indexes.map((index) => data[index]);
+    exportToExcel(dataRandom, sample.headerExcel); //Llamamos a la función exportToExcel
   };
  
 

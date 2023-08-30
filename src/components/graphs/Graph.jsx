@@ -23,27 +23,29 @@ ChartJS.register(
 );
 
 import { useData } from "@/context/DataContext";
+import { useProcessing } from "@/context/ProcessingContext";
 
 export function Graph() {
   const { sample } = useData();
-  //Tamaño del array
-  const arraySize = mas.data.length - 1;
-  //Array de labels
-  const labels = Array.from({ length: arraySize }, (_, i) => i + 1);
+  const { sampleProcessing } = useProcessing();
+  
   //Nuevo Array de 1 a n
-  const arr = Array.from({ length: arraySize }, (_, i) => i + 1);
-  //Data
-  let data = mas.data;
+  const arr = Array.from({ length: sampleProcessing.N}, (_, i) => i + 1);
+
+  //Array de labels
+  const labels = arr
+
   //Media de la data
-  const media = parseInt(arraySize / 2);
+  const media = parseInt(sampleProcessing.N / 2);
+ 
   //Desviación estándar con el index de la data
   const desviacionEst = (data) => {
     let desviacion = 0;
     let desviacionEstandar = 0;
-    for (let i = 0; i < arraySize; i++) {
+    for (let i = 0; i < sampleProcessing.N; i++) {
       desviacion += Math.pow(data.indexOf(data[i]) - media, 2);
     }
-    desviacionEstandar = Math.sqrt(desviacion / arraySize);
+    desviacionEstandar = Math.sqrt(desviacion / sampleProcessing.N);
     return desviacionEstandar;
   };
 
@@ -56,21 +58,21 @@ export function Graph() {
     });
   };
 
-  let desviacionEstandar = desviacionEst(data);
+  let desviacionEstandar = desviacionEst(arr);
   let resultadosA = normDist(arr, media, desviacionEstandar);
 
-  let arrayA = graphIndexes;
-  let arrayB = resultadosA;
-  let resultadosB = Array(arrayB.length).fill(0);
+  let lengthA = resultadosA.length;
+
+  let arrayA = sample.indexes;
+
+  let resultadosB = Array(lengthA).fill(0);
 
   for (let i = 0; i < arrayA.length; i++) {
     let index = arrayA[i];
-    if (index >= 0 && index < arrayB.length) {
-      resultadosB[index] = arrayB[index];
+    if (index >= 0 && index < lengthA) {
+      resultadosB[index] = resultadosA[index];
     }
   }
-
-  console.log(resultadosB);
 
   //Gráfica
   const datos = {

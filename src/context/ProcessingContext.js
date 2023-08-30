@@ -65,7 +65,7 @@ export const ProcessingProvider = ({ children }) => {
 
     const saveSampleProcessing = (N, z, p, e) => { //sample.data, sample.nivelDeConfianza, sample.probabilidadDeExito, sample.errorDeEstimacion
         //Size/universe/population(N)
-        sampleProcessing.N = N.length - 1;
+        sampleProcessing.N = N.length;
 
         //Confidence level (Z)
         const zeta = parseInt(z) / 100; //Change to decimal
@@ -91,7 +91,7 @@ export const ProcessingProvider = ({ children }) => {
     const indexesArray = (length, muestra) => {
         // Constantes y variables necesarias
         let indexes = []; // Array que contendrá los índices aleatorios
-        let startIndex = 0;
+        let startIndex = 1; // Índice inicial
         let parts; // Número de segmentos en los que se dividirá el array
         length >= 10000
             ? (parts = 10)
@@ -111,26 +111,29 @@ export const ProcessingProvider = ({ children }) => {
         for (let i = 0; i < parts; i++) {
             //Ejemplo: con un array de 20 elementos y 2 partes
             let endIndex = startIndex + partSize; // endIndex = 10
-            if (i === parts - 1) {
+            if (i === parts - 1) { 
                 // Si i = 1
                 endIndex = length; // endIndex = 20
                 splitSample = muestra; // splitSample = 20
             }
 
-            while (indexes.length < splitSample) {
-                let randomIndex = Math.floor(
-                    Math.random() * (endIndex - startIndex + 1) + startIndex
+            while (indexes.length < splitSample) { // Mientras que el array indexes tenga menos elementos que el tamaño de la muestra
+                let randomIndex = Math.floor( // randomIndex = 10
+                    Math.random() * (endIndex - startIndex + 1) + startIndex // Math.random() * (20 - 10 + 1) + 10
                 );
 
-                if (indexes.indexOf(randomIndex) === -1) {
-                    indexes.push(randomIndex);
+                if (indexes.indexOf(randomIndex) === -1) { // Si el índice aleatorio no está en el array indexes
+                    indexes.push(randomIndex); // Añadir el índice aleatorio al array indexes
                 }
             }
-            splitSample += count;
+            splitSample += count; // splitSample = 20 + 10
             startIndex = endIndex; // startIndex = 10
         }
         // ordenar los indices aleatorios
-        indexes.sort((a, b) => a - b);
+        indexes.sort((a, b) => a - b); // Ordenar los índices aleatorios de menor a mayor
+        //Si el ultimo elemento del array indexes es igual al tamaño del array, restarle 1
+        indexes[indexes.length - 1] === length ? indexes[indexes.length - 1] -= 1 : indexes[indexes.length - 1] = indexes[indexes.length - 1];
+        
         return indexes //Un array con los índices aleatorios 
     }
 

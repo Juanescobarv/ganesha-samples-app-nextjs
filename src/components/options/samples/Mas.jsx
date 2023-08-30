@@ -1,8 +1,8 @@
+'use client'
 import { useState } from "react";
 import { useData } from "@/context/DataContext";
 import { useProcessing } from "@/context/ProcessingContext";
 import { TechnicalMas } from "@/components/technical_samples/TechnicalMas";
-import { Graph } from "@/components/graphs/Graph";
 import { ExcelDownloader } from "@/components/ExcelDownloader";
 
 export function Mas() {
@@ -13,23 +13,36 @@ export function Mas() {
   //Use Processing
   const { sampleProcessing, indexesArray } = useProcessing();
 
-
-
   //Loading State Sample
   const onChange = async (event) => {
     event.preventDefault();
     await saveSample({ ...sample, [event.target.name]: event.target.value });
+    await setHasData(false);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     //Data
-    saveData(data)
-    setHasData(true);
+    if (sampleProcessing.N === 0) {
+      //Header
+      const headerExcel = data[0]; //Header of the Excel
+      sample.headerExcel = headerExcel//Save the header of the Excel
+      const dataSave = await data.slice(1); //Data without the header
+      console.log(data)
+      console.log(dataSave)
+      await saveData(dataSave)
+    }else {
+      console.log(data)
+      await saveData(data)
+    }
+
+    await setHasData(true);
+
     //Indexes
-    const arrayLength = data.length - 1;
-    const indexes = indexesArray(arrayLength, sampleProcessing.n); //Array of indexes
-    saveIndexes(indexes)
+    const indexes = await indexesArray(sampleProcessing.N, sampleProcessing.n); //Array of indexes
+    console.log(indexes)
+    await saveIndexes(indexes)
   };
 
   return (
@@ -125,7 +138,12 @@ export function Mas() {
                 type="number"
                 value={sample.nivelDeConfianza}
                 name="nivelDeConfianza"
-                onChange={onChange}
+                onChange={(e) => {
+                  const inputValue = e.target.value;
+                  if (inputValue >= 0) {
+                    onChange(e);
+                  }
+                }}
               />
             </label>
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -136,7 +154,12 @@ export function Mas() {
                 type="number"
                 value={sample.probabilidadDeExito}
                 name="probabilidadDeExito"
-                onChange={onChange}
+                onChange={(e) => {
+                  const inputValue = e.target.value;
+                  if (inputValue >= 0) {
+                    onChange(e);
+                  }
+                }}
               />
             </label>
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -147,7 +170,12 @@ export function Mas() {
                 type="number"
                 value={sample.errorDeEstimacion}
                 name="errorDeEstimacion"
-                onChange={onChange}
+                onChange={(e) => {
+                  const inputValue = e.target.value;
+                  if (inputValue >= 0) {
+                    onChange(e);
+                  }
+                }}
               />
             </label>
           </div>
@@ -163,7 +191,6 @@ export function Mas() {
       </form>
       {<section>
         {hasData && <TechnicalMas />}
-        {/* {hasData && <Graph />} */}
       </section>}
       <div className="w-auto h-12 rounded-lg mx-auto my-6 text-white">
         {hasData && <ExcelDownloader />}

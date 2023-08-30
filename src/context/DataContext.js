@@ -46,6 +46,8 @@ export const DataProvider = ({ children }) => {
         probabilidadDeExito: 50, //Probability of success (p)
         probailidadDeFallo: 50, //Probability of failure (q)
         errorDeEstimacion: 5, //Margin of error ()
+
+        headerExcel: [], //Header of the excel
         data: [], //Data from the sample
         indexes: [], //Indexes of the data
     });
