@@ -1,6 +1,5 @@
 import { useProcessing } from "@/context/ProcessingContext";
 import { useData } from "@/context/DataContext";
-import { Graph } from "@/components/graphs/Graph";
 
 export function TechnicalMas() {
   //Context data
@@ -34,7 +33,6 @@ export function TechnicalMas() {
         <p>Error de estimación: {sample.errorDeEstimacion}%</p>
         <p>Tamaño de la muestra: {sampleProcessing.n}</p>
       </div>
-      {/* <Graph /> */}
     </section>
 
   )
