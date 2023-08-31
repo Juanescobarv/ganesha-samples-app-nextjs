@@ -101,7 +101,12 @@ export function Mas() {
                 style={{ borderBottomColor: "#EE2B7B" }}
                 value={sample.descripcion}
                 name="descripcion"
-                onChange={onChange}
+                onChange={(event) => {
+                  const inputValue = event.target.value;
+                  if (inputValue.length <= 100) {
+                    onChange(event);
+                  }
+              }}
                 rows="2"
               ></textarea>
             </label>
