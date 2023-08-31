@@ -48,7 +48,7 @@ export function Mas() {
   return (
     <section>
       <form className="form-select-sm flex flex-col" onSubmit={handleSubmit}>
-        <div className="flex flex-row justify-around">
+        <div className="flex flex-row justify-center">
           <div className="flex flex-col m-5 max-w-sm min-w-384">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Nombre de la auditoria:
