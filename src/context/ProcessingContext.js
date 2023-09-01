@@ -84,7 +84,7 @@ export const ProcessingProvider = ({ children }) => {
 
         //Sample size (n)
         if (sampleProcessing.N < 50) {
-            sampleProcessing.n = Math.ceil((sampleProcessing.N * sampleProcessing.Z ** 2 * sampleProcessing.p * sampleProcessing.q) / ((sampleProcessing.N - 1) * sampleProcessing.e ** 2 + sampleProcessing.Z ** 2 * sampleProcessing.p * sampleProcessing.q)) - 2;
+            sampleProcessing.n = Math.ceil((sampleProcessing.N * sampleProcessing.Z ** 2 * sampleProcessing.p * sampleProcessing.q) / ((sampleProcessing.N - 1) * sampleProcessing.e ** 2 + sampleProcessing.Z ** 2 * sampleProcessing.p * sampleProcessing.q)) - 1;
         } else {
             sampleProcessing.n = Math.ceil((sampleProcessing.N * sampleProcessing.Z ** 2 * sampleProcessing.p * sampleProcessing.q) / ((sampleProcessing.N - 1) * sampleProcessing.e ** 2 + sampleProcessing.Z ** 2 * sampleProcessing.p * sampleProcessing.q));
         }

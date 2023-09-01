@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useData } from "@/context/DataContext";
 import { useProcessing } from "@/context/ProcessingContext";
 import { TechnicalMas } from "@/components/technical_samples/TechnicalMas";
-import { ExcelDownloader } from "@/components/ExcelDownloader";
 
 export function Mas() {
   //Loading State
@@ -103,7 +102,7 @@ export function Mas() {
                 name="descripcion"
                 onChange={(event) => {
                   const inputValue = event.target.value;
-                  if (inputValue.length <= 100) {
+                  if (inputValue.length <= 80) {
                     onChange(event);
                   }
               }}
@@ -197,9 +196,6 @@ export function Mas() {
       {<section>
         {hasData && <TechnicalMas />}
       </section>}
-      <div className="w-auto h-12 rounded-lg mx-auto my-6 text-white">
-        {hasData && <ExcelDownloader />}
-      </div>
     </section>
 
   );

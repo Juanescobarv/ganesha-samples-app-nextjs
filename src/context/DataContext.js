@@ -42,10 +42,10 @@ export const DataProvider = ({ children }) => {
         correo: '', //Email of the investigator
 
         tamanoPoblacion: 0, //Size/universe/population(N)
-        nivelDeConfianza: 95, //Confidence level (Z)
+        nivelDeConfianza: 90, //Confidence level (Z)
         probabilidadDeExito: 50, //Probability of success (p)
         probailidadDeFallo: 50, //Probability of failure (q)
-        errorDeEstimacion: 5, //Margin of error ()
+        errorDeEstimacion: 10, //Margin of error ()
 
         headerExcel: [], //Header of the excel
         data: [], //Data from the sample

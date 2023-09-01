@@ -23,14 +23,14 @@ export function ExcelDownloader() {
  
 
   return (
-    <section className="flex flex-row justify-center">
+    <div className="w-52 mr-5">
     <button
-       className="w-1/6 h-12 rounded-lg mx-auto my-6 text-white"
+       className="w-52 h-12 rounded-lg mx-auto my-3 mb-10 text-white"
        style={{ background: "#EE2B7B" }}
       onClick={handleExportClick}
     >
       Exportar Excel
     </button>
-  </section>
+  </div>
   )
 }
