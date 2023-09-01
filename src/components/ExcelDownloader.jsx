@@ -17,7 +17,7 @@ export function ExcelDownloader() {
   //Function to handle the click event
   //FIX TO DO: If the sample size is smaller, the function can bring double the header
   const handleExportClick = () => { 
-    const dataRandom =  indexes.map((index) => data[index]);
+    const dataRandom =  indexes.map((index) => data[index -1]);
     exportToExcel(dataRandom, sample.headerExcel); //Llamamos a la función exportToExcel
   };
  

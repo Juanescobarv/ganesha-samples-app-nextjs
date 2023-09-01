@@ -29,11 +29,11 @@ export function Mas() {
       const headerExcel = data[0]; //Header of the Excel
       sample.headerExcel = headerExcel//Save the header of the Excel
       const dataSave = await data.slice(1); //Data without the header
-      console.log(data)
-      console.log(dataSave)
+      
+     
       await saveData(dataSave)
     }else {
-      console.log(data)
+     
       await saveData(data)
     }
 
@@ -41,7 +41,7 @@ export function Mas() {
 
     //Indexes
     const indexes = await indexesArray(sampleProcessing.N, sampleProcessing.n); //Array of indexes
-    console.log(indexes)
+    
     await saveIndexes(indexes)
   };
 

@@ -83,8 +83,14 @@ export const ProcessingProvider = ({ children }) => {
         sampleProcessing.e = parseInt(e) / 100; //Change to decimal
 
         //Sample size (n)
-        console.log(sampleProcessing.n); sampleProcessing.n = Math.ceil((sampleProcessing.N * sampleProcessing.Z ** 2 * sampleProcessing.p * sampleProcessing.q) / ((sampleProcessing.N - 1) * sampleProcessing.e ** 2 + sampleProcessing.Z ** 2 * sampleProcessing.p * sampleProcessing.q));
+        if (sampleProcessing.N < 50) {
+            sampleProcessing.n = Math.ceil((sampleProcessing.N * sampleProcessing.Z ** 2 * sampleProcessing.p * sampleProcessing.q) / ((sampleProcessing.N - 1) * sampleProcessing.e ** 2 + sampleProcessing.Z ** 2 * sampleProcessing.p * sampleProcessing.q)) - 2;
+        } else {
+            sampleProcessing.n = Math.ceil((sampleProcessing.N * sampleProcessing.Z ** 2 * sampleProcessing.p * sampleProcessing.q) / ((sampleProcessing.N - 1) * sampleProcessing.e ** 2 + sampleProcessing.Z ** 2 * sampleProcessing.p * sampleProcessing.q));
+        }
+
         setSampleProcessing(sampleProcessing);
+
     };
 
     //This is import for generate de graph and the data of the sample
@@ -111,7 +117,7 @@ export const ProcessingProvider = ({ children }) => {
         for (let i = 0; i < parts; i++) {
             //Ejemplo: con un array de 20 elementos y 2 partes
             let endIndex = startIndex + partSize; // endIndex = 10
-            if (i === parts - 1) { 
+            if (i === parts - 1) {
                 // Si i = 1
                 endIndex = length; // endIndex = 20
                 splitSample = muestra; // splitSample = 20
@@ -131,9 +137,7 @@ export const ProcessingProvider = ({ children }) => {
         }
         // ordenar los indices aleatorios
         indexes.sort((a, b) => a - b); // Ordenar los índices aleatorios de menor a mayor
-        //Si el ultimo elemento del array indexes es igual al tamaño del array, restarle 1
-        indexes[indexes.length - 1] === length ? indexes[indexes.length - 1] -= 1 : indexes[indexes.length - 1] = indexes[indexes.length - 1];
-        
+
         return indexes //Un array con los índices aleatorios 
     }
 
