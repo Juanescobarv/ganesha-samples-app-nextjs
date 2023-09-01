@@ -144,7 +144,7 @@ export function Mas() {
                 name="nivelDeConfianza"
                 onChange={(e) => {
                   const inputValue = e.target.value;
-                  if (inputValue >= 0) {
+                  if (inputValue >= 0 && inputValue <= 100) {
                     onChange(e);
                   }
                 }}
@@ -160,7 +160,7 @@ export function Mas() {
                 name="probabilidadDeExito"
                 onChange={(e) => {
                   const inputValue = e.target.value;
-                  if (inputValue >= 0) {
+                  if (inputValue >= 0 && inputValue <= 100) {
                     onChange(e);
                   }
                 }}
@@ -176,7 +176,7 @@ export function Mas() {
                 name="errorDeEstimacion"
                 onChange={(e) => {
                   const inputValue = e.target.value;
-                  if (inputValue >= 0) {
+                  if (inputValue >= 0 && inputValue <= 100) {
                     onChange(e);
                   }
                 }}
